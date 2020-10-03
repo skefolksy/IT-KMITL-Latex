@@ -138,7 +138,24 @@ QR code ถูกคิดค้นขึ้นที่ประเทศญี
 \end{figure}
 
 \subsection{L298N (Motor Driver)}
+โมดูลสำหรับจ่ายไฟแบบควบคุมกำลังไฟได้ ซึ่งสามารถจ่ายไฟให้มอเตอร์ 2 ตัวแบบแยกอิสระ โดยใช้วงจร H-Bridge จ่ายไฟเข้ามอเตอร์ตามขั้วที่กำหนดและควบคุมความเร็วด้วยสัญญาณ PWM
 
 \subsection{Gear Motor}
+มอเตอร์แม่เหล็กแบบเพลาเดี่ยว โดยหลักการทำงานของ Gear Motor คือการเปลี่ยนพลังงานไฟฟ้าให้หลายเป็นพลังงานกลเพื่อควบคุมรอบการทำงานหรือการหมุนของวัตถุ มีหลายขนาดและรองรับแรงดันไฟฟ้าต่างกัน
+\begin{figure}
+    \centering
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=50mm,scale=0.6]{l298n.jpg}
+      \caption{Motor Driver}
+      \label{fig:l298n}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=50mm,scale=0.6]{gear-motor.png}
+      \caption{Gear Motor}
+      \label{fig:gear-motor}
+    \end{minipage}
+\end{figure}
 
-\subsection{MicroPython}
+\subsection{Arduino}
