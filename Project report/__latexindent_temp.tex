@@ -1,127 +1,46 @@
-\documentclass{itkmitlproject}
+\chapter{วิธีการดำเนินการวิจัย}
+\label{chapter:experiment}
 
-\usepackage{afterpage}
-\usepackage{graphicx,amsmath,latexsym,amssymb,amsthm}
-\usepackage{indentfirst}
-\usepackage{hyperref}
-\usepackage{hyphenat}
-\usepackage[numbers,square]{natbib}
-\usepackage{lipsum}
+\section{วิเคราะห์ความต้องการ}
+\subsection{ความต้องการส่วนหน้าที่หลักของระบบ (Functional Requirement)}
+\begin{itemize}
+    \itemsep0em
+    \item หุ่นยนต์สามารถทำตามชุดคำสั่งจากแผ่นคำสั่งได้
+    \item หุ่นยนต์สามารถอ่าน QR Code บนแผ่นคำสั่งได้
+\end{itemize}
 
-% \useEnglish
-\useThai
+\subsection{ความต้องการส่วนที่ไม่ใช่หน้าที่หลักของระบบ (Non-functional Requirement)}
+\begin{itemize}
+    \itemsep0em
+    \item ออกแบบอุปกรณ์ให้มีความปลอดภัยต่อการใช้งานของเด็ก
+    \item หุ่นยนต์สามารถอ่านข้อมูลจากแผ่นคำสั่งได้ถูกต้อง
+    \item ใช้งานง่าย
+    \item รองรับการขยายตัวของระบบ
+\end{itemize}
 
-\graphicspath{ {images/} }
+\section{การวิเคราะห์และออกแบบระบบ}
+\subsection{การออกแบบอุปกรณ์}
+สื่อการเรียนรู้การคิดเชิงคำนวณในรูปแบบการเขียนโปรแกรมแบบจับต้องได้พัฒนาขึ้นเพื่อเพิ่มประสิทธิภาพ และสนับสนุนการเรียนรู้ทักษะการคิดเชิงคำนวณแก่เด็ก และเยาวชน ประกอบด้วย 3 ส่วนหลัก คือ หุ่นยนต์เคลื่อนที่ได้ แผ่นคำสั่ง และแผนที่แบบตาราง 
 
-%1. Your thesis title (THAI)
-\newcommand{\ThesisTitle}{สื่อการเรียนรู้การคิดเชิงคำนวณ ในรูปแบบของการเขียนโปรแกรมแบบจับต้องได้}
-%2. Your thesis title (ENG)
-\newcommand{\ThesisTitleENG}{Learning media for computational thinking in a form of tangible programming}
-%3. Author name
-\newcommand{\Author}{ภาสวิชญ์ ริ้วทอง}
-%4. Author name ENG
-\newcommand{\AuthorENG}{Passawit Riewthong}
-%5. Author student ID
-\newcommand{\SId}{60070073}
-%6. Author 2 name
-\newcommand{\AuthorTwo}{มารีน่า หนูรามัญ}
-%7. Author 2 name ENG
-\newcommand{\AuthorTwoENG}{Mareena Nuramun}
-%8. Author 2 student ID
-\newcommand{\SIdTwo}{60070076}
-%9. Advisor name
-\newcommand{\Advisor}{รศ.ดร.ปานวิทย์ ธุวะนุติ}
-%10. Advisor name ENG
-\newcommand{\AdvisorENG}{Assoc. Prof. Dr. Panwit Tuwanut}
-%11. ภาคเรียนที่
-\newcommand{\Sem}{1}
-%12. ปีการศึกษา พ.ศ.
-\newcommand{\AcaY}{2563}
-%13. ปีการศึกษา ค.ศ.
-\newcommand{\AcaYAD}{2020}
-%14. วันส่งรายงาน
-\newcommand{\SubD}{1 ตุลาคม พ.ศ. 2562}
-%15. Copyright year (AD)
-\newcommand{\CopyrightYAD}{2020}
+ในส่วนของวัสดุและอุปกรณ์สำหรับทำตัวหุ่นยนต์จะมีความปลอดภัยและมีรูปลักษณ์ที่เหมาะสำหรับการใช้งานของเด็ก เพิ่มความปลอดภัยด้วยการใช้วัสดุที่เป็น Food Grade และรูปทรงที่ไม่เป็นอันตรายต่อการใช้งานด้วยการออกแบบให้มีส่วนโค้งเพื่อลดความแหลมคม
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=120mm,scale=0.6]{circuit _sketch.jpg}
+    \caption{การออกแบบวงจร}
+    \label{fig:circuit}
+\end{figure}
 
-\begin{document}
-    \frontmatter
-    \lhead{}\rhead{}\chead{}\lfoot{}\cfoot{\thepage}\rfoot{}
-    \makecover
-    \makeinnercover
-    \makeengcover
-    \makecopyrightcover
-    \makethesiscert
-    \makeprojectcert
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=120mm,scale=0.6]{model1.PNG}
+    \caption{การออกแบบหุ่นยนต์}
+    \label{fig:circuit}
+\end{figure}
 
-    % Setting margin for page numbering on frontmatter
-    \newgeometry{top=1in, bottom=1in, left=1.5in, right=1in, includefoot}
-    \setcounter{page}{1}
-    \pagenumbering{Roman}
-
-    \makeabstract{
-        ทักษะการคิดเชิงคำนวณเป็นทักษะหนึ่งที่เข้ามามีความสำคัญ และเป็นพื้นฐานที่จะนำไปสู่การแก้ไขปัญหาที่ซับซ้อนอย่างเป็นขั้นตอน และมีประสิทธิภาพ
-        ด้วยเหตุนี้การเรียนการสอนสำหรับเด็กปฐมวัยในปัจจุบันจึงเริ่มมีการสอดแทรก การสอนทักษะการคิดเชิงคำนวณ ทักษะการคิดวิเคราะห์ในรูปแบบต่าง ๆ
-        เพื่อให้เด็ก และเยาวชนสามารถนำเอาทักษะเหล่านี้ไปประยุกต์ใช้กับการแก้ปัญหาในชีวิตประจำวัน รวมถึงต่อไปในอนาคตโดยเฉพาะในยุคที่เทคโนโลยีมีบทบาทมากขึ้นในทุก ๆ ด้าน
-
-        งานวิจัยนี้คณะผู้จัดทำได้ศึกษาพบว่าวิธีการใช้สื่อการเรียนรู้ เช่น หุ่นยนต์ แผนที่แบบตาราง และสิ่งของที่จับต้องได้ อาทิ บล็อก นั้นมีประสิทธิภาพต่อพัฒนาการการเรียนรู้ของเด็กเป็นอย่างมาก
-        แต่ในทางกลับกัน สื่อการเรียนรู้การคิดเชิงคำนวณที่มีอยู่ในปัจจุบันมีมูลค่าซื้อขายค่อนข้างสูง ส่งผลให้เด็ก และเยาวชนที่ครอบครัวมีรายได้น้อยสามารถเข้าถึงอุปกรณ์เหล่านี้ได้ยาก
-        โดยงานวิจัยนี้มีการพัฒนาอุปกรณ์ Microcontroller เพื่อใช้สำหรับเป็นต้นแบบสื่อการเรียนรู้การคิดเชิงคำนวณ สำหรับเด็ก และเยาวชนในรูปแบบของการเขียนโปรแกรมแบบจับต้องได้
-        ด้วยอุปกรณ์ที่ราคาประหยัด ซึ่งสื่อการเรียนรู้นี้จะช่วยพัฒนาทักษะการคิดเชิงคำนวณ และส่งเสริมให้เยาวชนมีการทำกิจกรรมร่วมกันผ่านการคิดวิเคราะห์ และแก้ไขปัญหาตามรูปแบบการเล่นที่กำหนดให้
-    }
-
-    \makeabstracteng{
-        Computational thinking becomes an essential and fundamental skill that can lead to an effective problem-solving process. Accordingly, several teaching patterns of computational thinking and critical thinking skills were integrated into the current teaching and learning for preschool to enhance children and young people to apply them to solve daily life problems and later, especially in an age where technology is becoming increasingly important.
-    }
-
-    \makeack
-
-    \newpage
-    \addcontentsline{toc}{chapter}{\contentsname}
-    \tableofcontents
-
-    \newpage
-    \addcontentsline{toc}{chapter}{\listtablename}
-    \listoftables
-
-    \newpage
-    \addcontentsline{toc}{chapter}{\listfigurename}
-    \listoffigures
-
-    % Reset frontmatter page numbering margin, back to original margin from class file
-    \restoregeometry
-
-    \mainmatter
-    \lhead{}\rhead{\thepage}\chead{}\lfoot{}\cfoot{}\rfoot{}
-
-    \include{chapter1}
-    \include{chapter2}
-    \include{chapter3}
-    \include{chapter4}
-    \include{chapter5}
-
-    \clearpage
-
-    \def\inbib{1}
-    \addcontentsline{toc}{chapter}{\bibname}
-    \bibliographystyle{IEEEtran-kmitl}
-    \makeatletter
-    \EveryShipout{
-        \ifdim\pagetotal>\pagegoal
-            \if\inbib1
-                \aftergroup\@cont@heading
-            \else
-            \fi
-        \fi
-    }
-    \makeatother
-
-    \bibliography{reference}
-    \def\inbib{0}
-
-    \startappendix
-    \include{appendix}
-
-    \makeauthorbio
-
-\end{document}
+\subsection{แผนภาพยูสเคส (Use Case Diagram)}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=120mm,scale=0.6]{Use_Case_Diagram.png}
+    \caption{Use case diagram}
+    \label{fig:Use_Case_Diagram}
+\end{figure}

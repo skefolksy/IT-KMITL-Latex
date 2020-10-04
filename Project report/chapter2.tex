@@ -99,7 +99,7 @@ QR code ถูกคิดค้นขึ้นที่ประเทศญี
     Frame QR คือ QR Code ที่มีพื้นที่ว่างตรงกลาง (canvas area) ซึ่งสามารถนำรูปหรือตัวอักษรมาใส่ได้ และไม่มีผลต่อการอ่านข้อมูลของ QR Code นิยมนำไปใช้ในการนำเสนอสินค้าหรืออื่น ๆ ได้หลายวัตถุประสงค์
     \begin{figure}[ht]
         \centering
-        \includegraphics[width=90mm,scale=0.6]{frameqr.jpg}
+        \includegraphics[width=70mm,scale=0.6]{frameqr.jpg}
         \caption{Frame QR}
         \label{fig:frameqr}
     \end{figure}
@@ -109,7 +109,7 @@ QR code ถูกคิดค้นขึ้นที่ประเทศญี
     เป็นรูปแบบของ QR Code ที่ยังอยู่ในขั้นพัฒนาตัวต้นแบบ โดย QR Code ชนิดนี้จะมีการใช้สี CMYK เพื่อเพิ่มปริมาณการเก็บข้อมูล
     \begin{figure}[ht]
         \centering
-        \includegraphics[width=60mm,scale=0.6]{hcc2d.png}
+        \includegraphics[width=50mm,scale=0.6]{hcc2d.png}
         \caption{HCC2D}
         \label{fig:hcc2d}
     \end{figure}
@@ -126,36 +126,73 @@ QR code ถูกคิดค้นขึ้นที่ประเทศญี
 
 \end{enumerate}
 
-\subsection{โมดูล ESP32 CAM}
+\newpage\subsection{โมดูล ESP32 CAM}
 โมดูลพิเศษซึ่งมาพร้อมกับกล้อง OV2640 ความละเอียด 2 ล้านพิกเซล และ microSD card ในตัว ใช้ชิพ ESP32 ในการเชื่อมต่อกับสัญญาณ Wi-Fi หรือ Bluetooth ที่คลื่นความถี่ 2.4 GHz
 ออกแบบด้วยเทคโนโลยี TSMC พลังงานต่ำพิเศษ 40 นาโนเมตร โดย ESP32 CAM นั้น สามารถเป็นได้ทั้งตัวรับสัญญาณ และตัวปล่อยสัญญาณได้ในขณะเดียวกัน แต่ข้อเสียของมันคือไม่มีช่อง micro USB
 ไว้สำหรับการอัพโหลด ทำให้ต้องอาศัย USB to TTL ร่วมด้วย \cite{ESP32CAM}
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=70mm,scale=0.6]{esp32-cam.jpg}
+    \includegraphics[width=60mm,scale=0.6]{esp32-cam.jpg}
     \caption{ESP32 CAM}
     \label{fig:esp32-cam}
 \end{figure}
 
-\subsection{L298N (Motor Driver)}
-โมดูลสำหรับจ่ายไฟแบบควบคุมกำลังไฟได้ ซึ่งสามารถจ่ายไฟให้มอเตอร์ 2 ตัวแบบแยกอิสระ โดยใช้วงจร H-Bridge จ่ายไฟเข้ามอเตอร์ตามขั้วที่กำหนดและควบคุมความเร็วด้วยสัญญาณ PWM
-
-\subsection{Gear Motor}
-มอเตอร์แม่เหล็กแบบเพลาเดี่ยว โดยหลักการทำงานของ Gear Motor คือการเปลี่ยนพลังงานไฟฟ้าให้หลายเป็นพลังงานกลเพื่อควบคุมรอบการทำงานหรือการหมุนของวัตถุ มีหลายขนาดและรองรับแรงดันไฟฟ้าต่างกัน
-\begin{figure}
+\subsection{L9110S (Motor Driver)}
+โมดูลสำหรับจ่ายไฟแบบควบคุมกำลังไฟได้ ซึ่งสามารถจ่ายไฟให้มอเตอร์ 2 ตัวแบบแยกอิสระ โดยใช้วงจร H-Bridge จ่ายไฟเข้ามอเตอร์ตามขั้วที่กำหนด และควบคุมความเร็วด้วยสัญญาณ PWM
+\\\textbf{ข้อกำหนดทางเทคนิค} \cite{MotorControlDriverChip}
+\begin{itemize}
+    \itemsep0em
+    \item Dual H bridge Drive Chip: HG7881 (L9110S)
+    \item แรงดันไฟฟ้า: 2.5V-12V
+    \item กระแสขับมอเตอร์: สูงสุดที่ 800mA (ต่อ1ช่องมอเตอร์)
+    \item ขนาด: 29.2 x 23 มิลลิเมตร
+    \item น้ำหนัก: 5.5 กรัม
+\end{itemize}
+\begin{figure}[ht]
     \centering
-    \begin{minipage}{.5\textwidth}
-      \centering
-      \includegraphics[width=50mm,scale=0.6]{l298n.jpg}
-      \caption{Motor Driver}
-      \label{fig:l298n}
-    \end{minipage}%
-    \begin{minipage}{.5\textwidth}
-      \centering
-      \includegraphics[width=50mm,scale=0.6]{gear-motor.png}
-      \caption{Gear Motor}
-      \label{fig:gear-motor}
-    \end{minipage}
+    \includegraphics[width=50mm,scale=0.6]{L9110S.jpg}
+    \caption{Motor Driver}
+    \label{fig:L9110S}
 \end{figure}
 
-\subsection{Arduino}
+\subsection{Gear Motor GA12-N20}
+มอเตอร์แม่เหล็กแบบเพลาเดี่ยว โดยหลักการทำงานของ Gear Motor คือการเปลี่ยนพลังงานไฟฟ้าให้หลายเป็นพลังงานกลเพื่อควบคุมรอบการทำงานหรือการหมุนของวัตถุ มีหลายขนาด และรองรับแรงดันไฟฟ้าต่างกัน
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=50mm,scale=0.6]{gear-motor.png}
+    \caption{Gear Motor}
+    \label{fig:gear-motor}
+\end{figure}
+
+\subsection{MicroPython}
+MicroPython คือ compiler ที่สามารถแปลงโค้ดที่เขียนโดย Python3 ให้สามารถทำงานได้บน Microcontroller หรือระบบฝังตัว (Embedded System) ต่าง ๆ ซึ่งสะดวกต่อผู้ที่เริ่มต้นการเขียนโปรแกรมบนฮาร์ดแวร์เนื่องจากมีลักษณะการเขียน และ syntax ที่เหมือนกับการเขียน Python ปกติ แต่มีคุณสมบัติที่เหมือนกันเช่น พรอมต์แบบโต้ตอบ (Interactive Prompt), ฟังก์ชัน Closures, List และ การจัดการข้อผิดพลาด (Exception Handling) อีกทั้งยังมีขนาดเล็กพอสำหรับติดตั้ง และทำงานได้ภายในพื้นที่จัดเก็บข้อมูลเพียง 256k และ 16k ของแรม (RAM) \cite{MicroPython}
+\\\textbf{คุณสมบัติพิเศษของ MicroPython} \cite{MicroPythonBasic}
+\begin{itemize}
+    \itemsep0em
+    \item \textbf{Interactive REPL, or read-evaluate-print loop}
+    
+    สามารถเชื่อมต่อไปยังบอร์ด และเรียกใช้โค้ดได้โดยไม่จำเป็นต้อง compile หรือ upload ซ้ำ
+    
+    \item \textbf{Extensive software library}
+    
+    มีไลบรารีในตัวเพื่อรองรับงานจำนวนมาก ยกตัวอย่างเช่นการแยกข้อมูล JSON ออกจากบริการเว็บค้นหาข้อความ รวมไปถึงการทำโปรแกรม socket network ซึ่งสามารถสร้างได้ในไลบรารีของ MicroPython
+    
+    \item \textbf{Extensibility}
+    
+    เพิ่มขอบเขตของการทำงานให้สามารถประมวลผลภาษาที่มีระดับต่ำ เช่น C / C ++ และหากนำ MicroPython มาใช้ร่วมกันจะทำงานได้เร็วขึ้น
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[width=50mm,scale=0.6]{MicroPython_Logo.jpg}
+    \caption{โลโก้ MicroPython}
+    \label{fig:MicroPython}
+\end{figure}
+
+\newpage\subsection{Arduino Software IDE}
+คือซอฟต์แวร์แบบโอเพนซอร์ส (Open-source) ที่ใช้สำหรับเขียนโค้ด และอัปโหลดไปยังบอร์ด Microcontroller หรือตัวบอร์ด Arduino เอง สามารถทำงานได้หลายระบบปฎิบัติการไม่ว่าจะเป็น Windows, Mac OS X และ Linux โดยการเขียนโค้ดจะใช้ภาษา C/C++ ในการเขียน จากนั้นตัวโปรแกรมที่มีการติดตั้ง Compiler มาในตัวจะทำการแปลจาก C/C++  ไปเป็นภาษาสำหรับ Microcontroller และบันทึกเป็น Intel Hex File \cite{Arduino}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=50mm,scale=0.6]{Arduino_logo.png}
+    \caption{โลโก้ Arduino}
+    \label{fig:Arduino}
+\end{figure}
